@@ -1,0 +1,10 @@
+.rezolvare{
+    display: none;
+    background-color: #ededed;
+    padding: 0 15px 10px 15px;
+}
+.detalii1{
+    display: none;
+    background-color: rgba(126, 126, 126, .3);
+    padding: 0 15px 10px 15px;
+}

@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/exercitii.css">
+    <title>Recursivitate</title>
+  </head>
+  <body>
+      
+      <!--    HEADER  -->
+      <header>
+          
+        <!--     LOGO     -->
+        <nav class="main-header" >  
+            <div class="container">
+              <div class="no-gutters row">
+                <div class="col" style="padding-top: 5px;">
+                    <a class="logo" href="index.html">Recursivitatea</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!--     /LOGO     -->
+            
+          <!--     MENU     -->
+          <nav class="navbar navbar-light" style="background-color: rgba(182, 223, 249, 1)">
+            <nav class="navbar-expand-lg">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse menu-line" id="navbarTogglerDemo01">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                 <li class="nav-item">
+                    <a class="nav-link" href="index.html">Functii recursive</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="recursivitateaIndirecta.html">Recursivitatea indirecta</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="recursivitateaIteratia.html">Recursivitatea sau iteratia?</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="video.html">Video</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="exercitii.html">Exercitii propuse</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="evaluare.html">Evaluare</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </nav>
+            <!--     /MENU     -->
+      
+        </header>
+        <!--     /HEADER     -->
+      
+        <!--     CONTAINER     -->
+        <main class="container">
+          <nav>
+              <!--      Exercises    -->
+              <h4>Exeritii propuse</h4>
+              <ol>
+                <!--      Exercise 1    -->
+                <li>Avand un sir cu n elemente numere reale, sa se scrie o functie recursiva care calculeaza suma elementelor sirului.
+                    <a class="detalii" href="#">(Detalii)</a>
+                    <div class="detalii1"><br /><br />
+                        <p>Pentru acest exemplu, formula de recurenţă poate fi scrisă astfel: a[n]+suma(n-1). Prin urmare la o anumită etapă va trebui să însumăm elementul a[n] al şirului cu celelalte n-1 elemente ale şiului.</p>
+                        <p>Această operaţie se va repeta până când şirul elementelor se termină şi în mod firesc suma pentru nici un element va fi 0. </p>
+                        <a class="collapsible" href="#">(Rezolvare)</a>
+                        <div class="rezolvare"><br /><br />
+                        <pre>            #include&lt;iostream.h&gt;       <strong>//SUMA SIR</strong>
+                floar a[20];
+                <strong>float suma(int i);</strong>
+                <strong>void main()</strong>
+                {
+                    int n;              //  n-numarul de numere reale
+                    int i;
+                    cout&lt;&lt;&quot;n=&quot;&#59;         //se citesc n numere reale
+                    cin&gt;&gt;n;
+                    for(i=1;i&lt;=n;i++)
+                    {
+                        cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;&#59;
+                        cin&gt;&gt;a[i];
+                    }
+                    cout&lt;&lt;&quot;SUMA&quot;&lt;&lt;suma(n);        //apelul functiei
+                }
+                <strong>float suma(int i)</strong>      //i-indicele elementului din sir care se insumeaza la un moment dat
+                {
+                    if(i==0)        //conditia de oprire a apelului recursiv
+                        return 0;
+                    else
+                        return (a[i]+suma(i-1));        //autoapelarea functiei suma
+                }
+                      
+                      </pre><br />
+                      </div>
+                    </div>
+                  </li><br />
+                  <!--      /Exercise 1    -->
+                  
+                  <!--      Exercise 2    -->
+                  <li>Sa se calculeze expresia E=1/(2*3)+2/(3*4)+...+n/((n+1)*(n+2)), utilizand o functie recursiva, unde n este un numar natural citit de la tastatura.
+                    <a class="detalii" href="#">(Detalii)</a>
+                      <div class="detalii1">
+                          <p>Calculăm la un moment dat suma dintre termenul al n-lea al expresiei şi suma celorlalţi n-1 termeni ai expresiei. Astfel formula de recurenţă va fi: <br> n/((n+1)*(n+2)) + expresie(n-1)</p>
+                          <p>Calculul se opreşte când toţi termenii expresiei au fost însumaţi, prin urnare expresie rturnează valoarea 0.</p>
+                          <a class="collapsible" href="#">(Rezolvare)</a>
+                          <div class="rezolvare"><br /><br />
+                          <pre>             #include&lt;iostream.h&gt;       <strong>//EXPRESIE</strong>
+                    <strong>float expresie(int n);</strong>
+                      void main()
+                      {
+                        int n;       //n-valoarea pâna la care se calculează termenii
+                        float E;      //E-rezultatul expresiei
+                        cout&lt;&lt;&quot;n=&quot;; cin&gt;&gt;n;
+                        cout&lt;&lt;&quot;E=&quot;&lt;&lt;expresie(n);      //apelul funcţiei
+                      }
+                      <strong>float expresie(int i)</strong>
+                      { 
+                        if (i==0)       //condiţia de oprire a reapelarii funcţiei
+                            return 0;
+                        else
+                            return (i/((i+1)*(i+2))+expresie(i-1));         //autoapelarea funcţiei
+                        }
+                          </pre><br />
+                          </div>
+                      </div>
+                  </li><br />
+                  <!--      /Exercise 2    -->
+                  
+                  <!--      Exercise 3    -->
+                  <li>Sa se determine cea mai mare cifra a unui numar intreg, de cel mult 9 cifre, citit de la tastatura.
+                      <a class="detalii" href="#">(Detalii)</a>
+                      <div class="detalii1">
+                          <p>Folosim două variabile locale, a pentru memorarea ultimei cifre <strong>a</strong> numărului iar <strong>b</strong> pentru memorarea cifrei maxime din restul numărului.<br />
+                              De exemplu pentru n=256 vom avea:<br />
+                              a=6 şi b va conţine valoarea maximă pentru n=25.<br />
+                              Oprim reapelurile în momentul în care n=0.<br />
+                              Datorită faptului că variabilele sunt locale se vor memora pe stivă. Pe fiecare nivel de stivă comparăm cele două variabile <strong>a</strong> cu <strong>b</strong> şi o returnăm pe cea mai mare dintre ele.</p>
+                          <a class="collapsible" href="#">(Rezolvare)</a>
+                          <div class="rezolvare"><br /><br />
+                          <pre>         #include&lt;iostream.h&gt;       <strong>//CIFRA MAXIMĂ</strong>
+         #include&lt;conio.h&gt;
+            int max(long x);
+            <strong>void main()</strong>
+            {
+                long n; //n-numărul dat
+                cout&lt;&lt;&quot;n=&quot;;cin&gt;&gt;n;
+                cout&lt;&lt;&quot;cifra maxima:&quot;&gt;&gt;max(n);
+            }
+            <strong>int max(long x)</strong>         //<strong>x</strong>-numarul citit, transmis ca parametru
+            {
+                int a,b;
+                if (x==0)       //condiţia de opriere a apelului recursiv al funcţiei
+                   return 0;
+                else
+                {
+                    a=x%10;         //în variabila a reţinem ultima cifră a numărului
+                    b=max(x/10);        //se reapelează funcţia pentru numărul iniţial din care s-a eliminat
+                                    //ultima cifră prin impărţirea la 10, rezultatul se depune în varibila <strong>b</strong>
+                    if(a>b)             //se compară valorile obţinute în <strong>a</strong> şi <strong>b</strong>
+                        return a;           //se returnează valoarea cea mai mare
+                    else
+                        return b;
+                    }
+                }
+                          </pre><br />
+                          </div>
+                      </div>
+                  </li><br />
+                  <!--      /Exercise 3    -->
+                  
+                  <!--      Exercise 4    -->
+                  <li>Sa se construiasca, utilizand un algoritm recursiv, numarul format prin inversarea cifrelor unui numar natural n de cel mult 9 cifre, citit de la tastatura.
+                      <a class="detalii" href="#">(Detalii)</a>
+                      <div class="detalii1">
+                          <p>Folosim un parametru variabil m pentru transmiterea valorii calculate în programul principal.<br>
+                              Penru numărul citit <strong>n</strong>, formula de recurenţă este: <br>m=m*10+n%10<br>
+                              Condiţia de opritre a recursivităţii n=0.</p>
+                          <a class="collapsible" href="#">(Rezolvare)</a>
+                          <div class="rezolvare"><br /><br />
+                          <pre>             #include&lt;iostream.h&gt;       <strong>//INVERSARE CIFRE NUMĂR</strong>
+                <strong>void inv(long n,long &amp;m);</strong>
+                <strong>void main()</strong>
+                {
+                    long n,m=0;      //<strong>n</strong>-numărul de inversat, <strong>m</strong>-numărul inversat
+                    cout&lt;&lt;&quot;n=&quot;; cin&gt;&gt;n;
+                    inv(n,m);      //apelul funcţiei
+                    cout&lt;&lt;endl&gt;&gt;m;
+                }
+                <strong>void inv(long n,long &amp;m)</strong>      //<strong>m</strong>-parametru transmis prin referinţa pentru a prelua valoarea
+                {         //calculată în funcţie
+                    if (n!=0)         //condiţia de oprire a apelului recursiv
+                    {
+                        m=m*10+n%10;
+                        inv(n/10,m);      //autoapelarea funcţiei
+                    }
+                }
+                        </pre><br />
+                        </div>
+                      </div>
+                  </li><br />
+                  <!--      /Exercise 4    -->
+                  
+                  <!--      Exercise 5    -->
+                  <li>Sa se determine cel mai mare divizor comun a doua numere naturale citite de la tastatura cu algoritmul lui EUCLID.
+                    <a class="collapsible" href="#">(Rezolvare)</a>
+                    <div class="rezolvare"><br /><br />
+                    <pre>         #include&lt;iostream.h&gt;       <strong>//CMMDC</strong>
+            #include&lt;conio.h&gt;
+                <strong>int cmmdc(int a,int b);</strong>
+                <strong>void main()</strong>
+                {
+                    int a,b;
+                    cout&lt;&lt;&quot;a=&quot;; cin&gt;&gt;n;
+                    cout&lt;&lt;&quot;b=&quot;; cin&gt;&gt;b;
+                    cout&lt;&lt;&quot;c.m.m.d.c("&lt;&lt;a&lt;&lt;","&lt;&lt;b&lt;&lt;")="&lt;&lt;cmmdc(a,b);        //apelul funcţiei
+                }
+                <strong>int cmmdc(int a,int b)</strong>      //<strong>a</strong> şi <strong>b</strong> numerele penru care se calculeaza cmmdc
+                { 
+                    if (b)        //condiţia de oprirea a reapelului
+                        return cmmdc(b,a%b);        //autoapelarea funcţiei pentru împărţitor şi rest
+                    else
+                        return a;
+                }
+                    </pre><br />
+                    </div>
+                  </li><br />
+                  <!--      /Exercise 5    -->
+                  
+                  <!--      Exercise 6    -->
+                  <li>. Sa se converteasca un numar natural n , ale carui cifre se citesc de la tastatura, dat intr-o baza 2≤b≤9, in baza 10.
+                    <a class="collapsible" href="#">(Rezolvare)</a>
+                    <div class="rezolvare"><br />
+                    <pre>             #include&lt;iostream.h&gt; <strong>//CONVERSIE b->10</strong>
+             #include&lt;math.h&gt;
+                 const int max=50;
+                 int n,b,a[max],putere=1;
+                 <strong>long conv(int b,int i);</strong>
+                 <strong>void main()</strong>
+                 {
+                    int i;
+                    cout&lt;&lt;"baza de enumeratie:"; cin&gt;&gt;b                         //<strong>b</strong>-baza de enumeraţie
+                    cout&lt;&lt;"cate cifre are numarul? "; cin&gt;&gt;n;           //<strong>n</strong>- numărul de cifre ale numarului în baza <strong>b</strong>
+                    cout&lt;&lt;"dati cifrele pe rand:"&lt;&lt;endl;
+                    for(i=n-1;i&gt;=0;i--)                          // se citesc cele <strong>n</strong> cifre ale numărului în baza <strong>b</strong>
+                    {
+                        cout&lt;&lt;"cifra "&lt;&lt;i&lt;&lt;":";
+                        cin&gt;&gt;a[i];
+                    }
+                    cout&gt;&gt;endl;
+                    cout&lt;&lt;"numarul ";
+                    for(i=n;i&gt;=0;i--)
+                    cout&lt;&lt;a[i];
+                    cout&lambda;&lt;" in baza "&lt;&lt;b&lt;&lt;" transformat in baza 10 este "&lt;&lt; onv(b,0);           //apelul funcţiei
+                    }
+                    <strong>long conv(int b,int i)</strong>
+                    {
+                      if(i&lt;n)                                //condiţia de oprirea a reapelului
+                        return (conv(b,i+1)+a[i]*pow(b,i));                             //autoapelarea funcţiei
+                      else
+                        return a[n]*pow(b,i);
+                    }
+                    </pre>
+                    </div>
+                  </li><br />
+                  <!--      /Exercise 6    -->
+                  
+                  <!--      Exercise 7    -->
+                  <li>Sa se converteasca un numar natural n de cel mult 5 cifre, citit de la tastatura, din baza 10 intr-o baza 2≤b≤9.
+                    <a class="collapsible" href="#">(Rezolvare)</a>
+                    <div class="rezolvare"><br />
+                    <pre>               #include&lt;iostream.h&gt;                              <strong> //CONVERSIE BAZA 10 -> b</strong>
+                        int a[50];                      //retine cifrele numarului transformat in baza b
+                        <strong>void conv(int n,int b,int &amp;k);</strong>
+
+                        <strong>void main()</strong>
+                        {
+                          int n,b,k=0;                  //n este numarul in baza 10
+                          cout&lt;&lt;"baza="; cin&gt;&gt;b;                //b este baza in care dorim sa transformam numarul
+                          cout&lt;&lt;"numarul in baza 10 ="; cin&gt;&gt;n;
+                          conv(n,b,k);                  //apelul funcţiei
+                          cout&lt;&lt;"k="&lt;&lt;k&lt;&lt;endl;
+                          cout&lt;&lt;endl;
+                          cout&lt;&lt;"numarul "&lt;&lt;n&lt;&lt;" convertit in baza "&lt;&lt;b&lt;&lt;" este ";
+                          for(int i=k-1;i&gt;=0;i--)
+                          cout&lt;&lt;a[i];
+                          }
+                          <strong>void conv(int n,int b,int &amp;k)</strong>
+                          {
+                            if (n&gt;0)                         //conditia de oprire
+                                {
+                                    a[k]=n % b;                 //se retine restul impartirii lui n baza b
+                                    k++;                        //se modifica indicele de tanlou
+                                    conv(n/b,b,k);
+                                }
+                    </pre>
+                    </div>
+                  </li><br />
+                  <!--      /Exercise 7    -->
+                  
+                  <!--      Exercise 8    -->
+                  <li>Se citesc doua siruri de caractere x si y. Sa se afiseze daca sirul x este anagrama sirului y.
+                      <a class="detalii" href="#">(Detalii)</a>
+                      <div class="detalii1">
+                          <p>Pentru a verifica dacă cele două şiruri sunt anagrame vom proceda asfel:<br>
+                              a.) Dacă cele două şiruri au lungimi diferite, nu pot fi anagrame.<br>
+                              b.) Dacă au aceeaşi lungime, vom căuta primul caracter din şirul x în al şirul y. Dacă îl găsim vom şterge acest caracter atât din şirul x cât şi din şirul y. Reluăm procedeul până când cele două şiruri devin vide.<br>
+                              c.) În cazul în care caracterul din x nu se găseşte în y, înseamnă că şirurile nu sunt anagrame.
+                          </p>
+                      <a class="collapsible" href="#">(Rezolvare)</a>
+                      <div class="rezolvare"><br />
+                      <pre>         #include&lt;iostream.h>&gt;                       <strong>//ANAGRAME</strong>
+         #include&lt;conio.h&gt;
+         #include&lt;string.h&gt;
+            <strong>int anagrama(char x[50],char y[50]);</strong>
+            <strong>void sterg(char x[50],int poz,int nr);</strong>
+            <strong>void main()</strong>
+              {
+                char x[50],y[50];
+                cout&lt;&lt;"dati cele 2 siruri:";
+                cin&gt;&gt;x;
+                cin&gt;&gt;y;
+                if (strlen(x)!=strlen(y))
+                    cout&lt;&lt;"sirurile nu au ac lungime";
+                else
+                    if (anagrama(x,y))              //apelul funcţiei
+                        cout&lt;&lt;"sirurile sunt anagrame";
+                    else
+                        cout&lt;&lt;"sirurile nu sunt anagrame";
+                }
+             <strong>int anagrama(char x[50],char y[50])</strong>
+                {
+                  char *p;
+                  if ((strcmp(x,"")==0)&amp;&amp;(strcmp(y,"")==0))
+                     return 1;
+                   p=strchr(y,x[0]);               //se cauta prima litera din x in y
+                    if (p==0)
+                       return 0;
+                    strcpy(x,x+1);                  //daca se gaseste, se stege din x si din y
+                    strcpy(p,p+1);
+                        return anagrama(x,y);                               //autoapelarea funcţiei
+                }
+                        </pre>
+                        </div>
+                      </div>
+                  </li><br />
+                  <!--      /Exercise 8    -->
+                  
+                  <!--      Exercise 9    -->
+                  <li>Fie n un numar natural. Sa se genereze toate succesiunile de n (n&lt;20) caractere &apos;.&apos; si &apos;_&apos;.
+                      <a class="detalii" href="#">(Detalii)</a>
+                      <div class="detalii1">
+                          <p>Vom genera într-un vector a, succesiunea de caractere conform cu cerinţele problemei.<br>
+                              De exemplu pentru n=3 vom genera succesiunile de “.” şi “_” în orinea de mai jos.<br>
+                              . . .<br>
+                              . . _<br>
+                              . _ .<br>
+                              . _ _<br>
+                              _ . .<br>
+                              _ . _<br>
+                              _ _ .<br>
+                              _ _ _<br>
+                              Pentru a obţine această succesiune va trebui să reapemăm funcţia de două ori, o dată penru a completa “.” a doua oară pentru a completa “_”.<br>
+                              Reapelurile se termină după ce am completat toate cele n caractere.<br>
+                              Urmăriţi programul de mai jos şi comentariile lui pentru a înţelege acest mecanism.<br>
+                          </p>
+                      <a class="collapsible" href="#">(Rezolvare)</a>
+                      <div class="rezolvare"><br />
+                      <pre>           #include&lt;iostream.h&gt;          <strong>//GENERARE “.” ŞI “_”</strong>
+                char a[20];                 // în vectorul a vom afişa succesiunea de puncte şi liniuţe “.” şi “_”
+                int n;
+                        
+                <strong>void afisare();</strong>
+                <strong>void generare(int i);</strong>
+                <strong>void main()</strong>
+                    {
+                      cout&lt;&lt;"n="; cin&gt;&gt;n;               //<strong>n</strong>-lungimea şirului de generat
+                      generare(1);
+                      }
+                <strong>void afisare()</strong>             //afişează conţinutul vectorului <strong>a</strong>
+                    {
+                       for(int i=1;i&lt;=n;i++)
+                            cout&lt;&lt;a[i]&lt;&lt;" ";
+                            cout&lt;&lt;endl;
+                    }
+                <strong>void generare(int i)</strong>                   //<strong>i</strong>-indică poziţia pe care o vom cpmpleta cu un “.” sau o “_”
+                    {
+                      if(i&gt;n)            //dacă i a ajuns la n, înseamnă ca am completat tote cele n semne
+                            afisare();
+                        else
+                            {
+                                a[i]='.';       //punem un “.” pe poziţia i a vectorului
+                                generare(i+1);     //prin apeluri recursive, funcţia va completa toate cele n elemente cu “.”
+                                a[i]='_';               //pe măsură ce se coboară în stivă se înlocuieşte câte un “.” cu “_”
+                                generare(i+1);       //ATENŢIE! după ce se înlocuieşte un caracter, funţia se va reapela din
+                            }               //nou tot pentru a completa “.” , apoi iarăşi pentru “_”.
+                        }
+
+                       </pre>
+                      </div>
+                      </div>
+                  </li><br />
+                  <!--      /Exercise 9    -->
+                  
+                  <!--      Exercise 10    -->
+                  <li>Se citeste un vector cu n numere intregi. Sa se ordoneze crescator folosind tehnica recursiva.
+                      <a class="detalii" href="#">(Detalii)</a>
+                      <div class="detalii1">
+                          <p>Vom utiliza metoda interschimbării. Astfel vom compara fiecare element v[i] al vectorului cu i=n-1,1, cu toate elementele j, cu j=i-1 la 0. Dacă v[i]&gt;v[j], le interschimbăm.<br>
+                            Vom folosi o funcţie, să o numim ord, care se va autoapela pentru fiecare element v[i] al vectorului cu i=n-1,1.<br>
+                              În cadrul acestei funcţii vom apela o altă funcţie, să o numim ordonare.<br>
+                              Aceasta va interschimba elementele care sunt mai mari decăt v[i] din şirul cuprins între i-1 şi 0, cu elementul v[i].<br>
+                          </p>
+                      <a class="collapsible" href="#">(Rezolvare)</a>
+                      <div class="rezolvare"><br />
+                      <pre>               #include &lt;iostream.h&gt;               <srong>//ORDONARE VECTOR</srong>
+                #define MAX 20
+                    int v[MAX],n;
+                    void citire();
+                    void afisare();
+                    void ordonare(int j,int i);
+                    void ord(int i);
+                    <strong>void main()</strong>
+                       { 
+                         citire();
+                         afisare();
+                         ord(n-1);
+                         afisare();
+                       }
+                    <strong>void citire()</strong>                       <strong>//citeşte n-nr. de elemente şi elementele vectorului</strong>
+                      {
+                         int i;
+                         cout&lt;&lt;"n="; cin&gt;&gt;n;
+                         for(i=0;i&lt;n;i++)
+                         {
+                            cout&lt;&lt;"v["&lt;&lt;i&lt;&lt;"]:";
+                            cin&gt;&gt;v[i];
+                          }
+                        }
+                    <strong>void afisare()</strong>                  <strong>//afişează elementele vectorului</strong>
+                        {
+                           int i;
+                           cout&lt;&lt;endl;
+                           for(i=0;i&lt;n;i++)
+                            { 
+                              cout&lt;&lt;v[i]&lt;&lt;" ";
+                            }
+                        }
+                    <strong>void ordonare(int j,int i)</strong>             <strong>//compară un element v[i] cu toate de după el</strong>
+                        { 
+                           int aux;
+                           if(j&gt;=0)
+                            {
+                                if(v[i]&lt;v[j])                //inteschimbă v[i] cu elementele mai mari decât el
+                                    { 
+                                        aux=v[i];
+                                        v[i]=v[j];
+                                        v[j]=aux;
+                                    }
+                                ordonare(j-1,i);
+                            }
+                        }
+                    <strong>void ord(int i)</strong>
+                      { 
+                        int b;
+                        if(i>0)
+                            {
+                                ordonare(i-1,i);
+                                ord(i-1);
+                            }
+                       }
+                      </pre>
+                      </div>
+                      </div>
+                  </li>
+                  <!--      /Exercise 10    -->  
+              </ol>
+          </nav> 
+        </main>
+        <!--     /CONTAINER     -->
+
+        <!--      FOOTER     -->
+        <footer>
+          <div class="second-footer">
+          <div class="container">
+                <div class="row">
+                    <div class="col copyright">
+                        <small>Copyright &copy; Recursivitatea 2018.  Designed by.</small> 
+                    </div>
+                    <div class="col socials">
+                        <ul>
+                            <li><a href="#"><img src="Images/Facebook.png" alt="Facebook"></a></li>
+                            <li><a href="#"><img src="Images/Twitter%20copy.png" alt="twitter"></a></li>
+                            <li><a href="#"><img src="Images/G+%20copy.png" alt="G+"></a></li>
+                            <li><a href="#"><img src="Images/Linkedin.png" alt="Linkedin"></a></li>
+                            <li><a href="#"><img src="Images/Flickr.png" alt="Flickr"></a></li>
+                        </ul>
+                    </div>
+              </div>
+          </div>
+          </div>
+        </footer>
+        <!--     /FOOTER     -->
+        
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      
+    <script type="text/javascript" src="JavaScript/exercitii.js"></script>
+  </body>
+</html>

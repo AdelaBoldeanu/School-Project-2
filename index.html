@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/index.css">
+    <title>Recursivitate</title>
+  </head>
+    
+  <body> 
+      <!--    HEADER  -->
+      <header>
+          <!--     NAV     -->
+          <nav class="main-header" >  
+            <div class="container">
+              <div class="no-gutters row">
+                <div class="col" style="padding-top: 5px;">
+                    <a class="logo" href="index.html">Recursivitatea</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!--     /NAV     -->
+            
+          <!--     MENU     -->
+          <nav class="navbar navbar-light" style="background-color: rgba(182, 223, 249, 1)">
+            <nav class="navbar-expand-lg">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse menu-line" id="navbarTogglerDemo01">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Functii recursive</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recursivitateaIndirecta.html">Recursivitatea indirecta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recursivitateaIteratia.html">Recursivitatea sau iteratia?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="video.html">Video</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="exercitii.html">Exercitii propuse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="evaluare.html">Evaluare</a>
+                    </li>
+                </ul>
+              </div>
+            </nav>
+          </nav>
+          <!--     /MENU     -->
+      </header>
+      <!--     /HEADER     -->
+      
+      <!--     CONTAINER     -->
+      <main class="container"><br />
+          <nav id="definitie">
+              <h4>Definitie</h4>
+              <p> 	&nbsp; 	&nbsp; Sa ne imaginam un copac. O ramura a copacului este formata din mai multe ramuri fiecare la randul ei fiind formata din ramuri mai mici, acestea sunt formate din ramuri si mai mici ... si asa mai departe pana cand ajungem la cele mai mici ramuri, fiecare fiind formata dintr-o tulpina si mai multe frunze.</p>
+              <p> &nbsp; &nbsp; Am descris ramura unui copac folosindu-ne de aceeasi notiune, ramura, pana cand am ajuns la cele mai mici elemente care o descriu, tulpina si frunzele. Matematica modeleaza si exprima prin relatii si formule natura, asa ca regasim si aici astfel de definitii, numite &quot;relatii de recurenta&quot;. De exemplu, pentru a calcula factorialul unui numar, procedam astfel: </p>
+              <pre>         n! = n * (n-1) * (n-2) * ... 2 * 1-se observa ca ultimul element este precizat. </pre>
+              <div id=default>
+                <div>n!=<span class="left-brace-tl left-brace"></span>
+                    <span class="left-brace-tr left-brace"></span>1 ,&nbsp; &nbsp; &nbsp;  pentru n&le;1
+                </div><br />
+                <div>&nbsp; &nbsp; &nbsp; <span class="left-brace-bl left-brace"></span>
+                    <span class="left-brace-br left-brace"></span>n*(n-1) *( 1)!,&nbsp; &nbsp; &nbsp; inrest
+                </div>
+              </div>
+              <p> &nbsp; &nbsp; &nbsp; mai concret: 5!=5*4*3*2*1=120</p>
+              <p>&nbsp; &nbsp; Să observăm din exemplele de mai sus următoarele:</p>
+              <ul>
+                  <li>Ultimul nivel al definitiei, sa-l numim nivel elementar, trebuie sa fie explicitat.</li>
+                  <li>In cadrul definitiei unei notiuni apare insasi notiunea care se defineste.</li>
+              </ul>
+              <p>&nbsp; &nbsp; Spunem ca o notiune este definita recursiv, daca in definirea ei apare insasi notiunea care se defineste.</p>
+              <pre>     Structura unei functii recursive: 
+              tip nume_functie (lista de parametri) 
+              {................. 
+              if(conditie de continuare sau de oprire)
+              .................
+              nume_functie(lista de parametri); 
+              .................. 
+              }
+              </pre>
+              <p>&nbsp; &nbsp; Orice functie recursiva trebuie sa contina o conditie de reluare a apelului recursiv(sau de oprire). Fara aceasta conditie, functia teoretic se reapeleaza la infinit, dar nu se intampla acest lucru, deoarece se umple segmentul de stiva alocat functiei si programul se intrerupe cu eroare. </p>
+              <p> &nbsp; &nbsp; La fiecare reapel al functiei se executa aceeasi secventa de instructiuni. </p>
+              <p> &nbsp; &nbsp; Pentru functiile de tip diferit de void apelul recursiv se face printr-o instructiune return, prin care fiecare apel preia rezultatul apelului anterior.</p>
+          </nav><br />
+          <nav id="faraPara">
+              <h4>Exemplu de functie recursiva fara parametri: </h4>
+              <p> &nbsp; &nbsp; &nbsp; Se citeste de la tastatura un cuvant terminat printr-un spatiu. Sa se afiseze cuvantul inversat.</p>
+              <img src="Images/Group-11.gif" class="imgFaraP" alt="faraPara">
+              <pre class="faraP">         #include&lt;ioxtream.h&gt;            <strong>//Inversare cuvant</strong>
+              <strong>void inv()</strong>
+              {
+                char lit;
+                cin.get(lit);
+                cout&lt;&lt;lit;
+                if(lit!= '')          //conditia de reluare
+                    inv();            //autoapelarea functiei inv()
+                cout&lt;&lt;lit;
+              }
+              <strong>void main()</strong>
+              {
+                cout&lt;&lt;"Introduceti cuvantul:";
+                inv();            //apelul functiei inv()
+              }
+              </pre> 
+              <div>
+                Scrieti cuvantul aici <input type="text" id="rec" name="rec">
+                <button type="button" onclick="inverseaza()">Inverseaza!</button>
+                <h3>Cuvantul inversat pentru &nbsp;&nbsp;<span id="inputTextID"></span>&nbsp;&nbsp; este: &nbsp;&nbsp;<span id="checkText"></span></h3>
+              </div>
+              <p> &nbsp; &nbsp; &nbsp; In exemplul de mai sus, functia recursiva se numeste inv() si contine o variabila locala de tip char, numita lit. Aceasta functie se apeleaza din functia principala main() si va afisa cuvantul inversat. </p>
+              <p> &nbsp; &nbsp; &nbsp; Sa urmarim codul programului si ceea ce se intampla pe stiva.</p>
+              <p> &nbsp; &nbsp; &nbsp;  Presupunem ca citim cuvantul “rac“ urmat de un spatiu.</p>
+              <p> &nbsp; &nbsp; &nbsp; La primul apel al functiei inv(), in cadrul functiei main(), se creaza nivelul 1 pe stiva. Controlul programului in acest moment se da functiei inv(). In cadrul acestei functii am declarat variabila locala lit in care citim prima litera “r”. Aceasta variabila impreuna cu valoarea ei se memoreaza pe stiva.</p>
+              <p> &nbsp; &nbsp; &nbsp; Urmeaza testul de continuare, verificam daca nu s-a terminat de citit cuvantul, adica daca am citit un caracter diferit de spatiu. Intrucat caracterul citit a fost “r”, reapelam functia inv(). Se creaza nivelul 2 pe stiva. Se citeste urmatoarea litera, “a”. Pe nivelul 2 se memoreaza in variabila lit, caracterul “a”. </p>
+              <p> &nbsp; &nbsp; &nbsp; In urma testului daca litera citita nu este spatiu se decide reapelarea functiei inv(). </p>
+              <p> &nbsp; &nbsp; &nbsp; Se creaza nivelul 3 pe stiva, se citeste urmatoarea litera si se memoreaza lit cu valoarea “c” pe acest nivel. Intrucat nu am citit caracterul “ “(spatiu), se reapeleaza functia. </p>
+              <p> &nbsp; &nbsp; &nbsp; De data aceasta cuvantul s-a terminat si se citeste caracterul spatiu. Se creaza nivelul 4 pe stivă. Se memoreaza variabila lit cu valoarea “ “(spatiu). In urma testului se constata ca lit contine caracterul spatiu, prin urmare cuvantul s-a terminat si functia nu se mai reapeleaza.</p>
+              <p> &nbsp; &nbsp; &nbsp;  In acest moment se revine la instructiunea aflata imediat dupa reapelul functiei, se afiseaza continutul variabilei lit, adica “ “. Se inchide nivelul 4 de stiva, se revine la instructiunea urmatoare si se afiseaza “c”. Se inchide nivelul 3 de stiva, se afiseaza “a”. Se inchide nivelul 2 si se afiseaza “r”, se inchide si nivelul 1 si se revine in functia main(), care in acest moment se incheie si astfel se termina programul.</p>
+          </nav><br />
+          <nav id="cuPara">
+              <h4>Exemplu de functie recursiva cu parametri: </h4>
+              <p> &nbsp; &nbsp; &nbsp; Sa se calculeze n!, pentru un numar natural n citit de la tastatura.</p>
+              <pre>                 #include&lt;iostream.h&gt;            <strong>//Factorial</strong>
+                    <strong>int fact(intx)</strong>
+                    {
+                        if((x&lt;=1))     //conditia de oprire
+                        return 1;
+                        else
+                        return(x*fact(x-1));      //autoapelul functiei
+                    }
+                    <strong>void main()</strong>
+                    {
+                    int n;
+                    cout&lt;&lt;&quot;n=&quot;&semi; cin&gt;&gt;n;
+                    cout&lt;&lt;&quot;n!=&quot;&lt;&lt;fact(n);       //apelul functiei
+                    }
+              </pre>
+              <div>
+                n= <input type="text" id="rec1" name="rec1">
+                <button type="button" onclick="calculeaza()">Calculeaza!</button>
+                <h3>Factorialul numarului &nbsp;&nbsp;<span id="inputValueID"></span>&nbsp;&nbsp; este: &nbsp;&nbsp;<span id="checkValue"></span></h3>
+              </div>
+              <p> &nbsp; &nbsp; &nbsp; Priviti codul programululi FACTORIAL, de mai sus. Presupunem ca dorim sa calculam valoarea lui 5!, prin urmare n=5. Sa observam ca functia are parametrul transmis prin valoare, x. Prin urmare x se va memora pe fiecare nivel al stivei, intocmai ca variabila locala lit din programul precedent.</p>
+              <div>
+                  <img src="Images/pas1.png" class="imgP1" alt="CuParametri">
+                  <img src="Images/pas2.png" class="imgP2" alt="CuParametri"><br /><br />
+                  <p> &nbsp; &nbsp; &nbsp;  Conform programului de mai sus, valoarea functiei se calculeaza astfel:</p>
+                  <ul>
+                      <li>pe nivelul 1: x=5 se reapeleaza fact(4),</li>
+                      <li>pe nivelul 2: x=4 se reapelează fact(3),</li>
+                      <li>pe nivelul 3: x=3 se reapelează fact(2),</li>
+                      <li>pe nivelul 4: x=2 se reapelează fact(1),</li>
+                      <li>pe nivelul 5: x=1 si in acest moment functia se poate calcula si avem fact(1)=1.</li>
+                  </ul>
+                  <p> &nbsp; &nbsp; &nbsp;  In momentul in care valoarea functiei a fost calculata, se inchide nivelul 5 si se revine la nivelul 4.</p>
+                  <ul>
+                      <li>Se calculeaza 2*1=2, se inchide nivelul 4 si se revine la nivelul 3.</li>
+                      <li>Se calculeaza 3*2=6, se inchide nivelul 3 si se revine la nivelul 2.</li>
+                      <li>Se calculeaza 4*6=24, se inchide nivelul 2 si se revine la nivelul 1.</li>
+                      <li>Se calculeaza 5*24=120, se inchide nivelul 1 si se revine in funtia main().</li>
+                  </ul>
+              </div>
+              <p> &nbsp; &nbsp; &nbsp; Pentru a verifica daca formula de recurenta determinata este corecta, putem proceda ca in exemplul de mai jos, pentru 5!: </p>
+              <p class="fact5"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; fact(5)=5*fact(4)=5*4*fact(3)=5*4*3*fact(2)=5*4*3*2*fact(1)=5*4*3*2*1=120. </p><br /><br />
+              <h6>Cum am gandit functia recursiva factorial? </h6>
+              <p> &nbsp; &nbsp; &nbsp; La o anumita etapa, functia factorial trebuie sa efectueze un produs si anume produsul dintre numarul x si produsul calculat pentru celelalte x-1 elemente. Produsul pentru cele x-1 elemente nu il cunoastem dar la randul lui poate fi calculat ca produs dintre x-1 si celelalte x-2 elemente si asa mai departe. Aceasta repetitie se realizeaza prin reapelarea functiei.</p>
+              <p> &nbsp; &nbsp; &nbsp; Cand sirul produselor se sfarseste trebuie sa avem ultima valoare a produsului bine definita. Acest lucru il vom realiza prin stabilirea unei conditii de oprire a reapelurilor recursive si valoarea pentru ultimul element. </p><br /><br />
+              <h6>Cum gandim o functie recursiva in general? </h6>
+              <p> &nbsp; &nbsp; &nbsp; Stabilim ce se executa la o anumita etapa, apoi reluam procedeul pentru toate celelalte elemente ramase, prin reapelarea functiei, avand grija sa impunem conditii de oprire ale reapelarii functiei.</p>
+          </nav>    
+      </main>
+      <!--     /CONTAINER     -->
+      
+      <!--      FOOTER     -->
+      <footer>
+          <div class="second-footer">
+          <div class="container">
+                <div class="row">
+                    <div class="col copyright">
+                        <small>Copyright &copy; Recursivitatea 2018.  Designed by.</small> 
+                    </div>
+                    <div class="col socials">
+                        <ul>
+                            <li><a href="#"><img src="Images/Facebook.png" alt="Facebook"></a></li>
+                            <li><a href="#"><img src="Images/Twitter%20copy.png" alt="twitter"></a></li>
+                            <li><a href="#"><img src="Images/G+%20copy.png" alt="G+"></a></li>
+                            <li><a href="#"><img src="Images/Linkedin.png" alt="Linkedin"></a></li>
+                            <li><a href="#"><img src="Images/Flickr.png" alt="Flickr"></a></li>
+                        </ul>
+                    </div>
+              </div>
+          </div>
+          </div>
+      </footer>
+      <!--     /FOOTER     -->
+      
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      
+    <script type="text/javascript" src="JavaScript/index.js"></script>
+  </body>
+</html>
